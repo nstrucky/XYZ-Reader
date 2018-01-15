@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://C:\Users\Nick\AndroidStudioProjects\Android Developer Nanodegree\xyz-reader-starter-code\XYZ-Reader.iml" filepath="C:\Users\Nick\AndroidStudioProjects\Android Developer Nanodegree\xyz-reader-starter-code\XYZ-Reader.iml" />
       <module fileurl="file://$PROJECT_DIR$/XYZReader/XYZReader.iml" filepath="$PROJECT_DIR$/XYZReader/XYZReader.iml" />
       <module fileurl="file://$PROJECT_DIR$/xyz-reader-starter-code.iml" filepath="$PROJECT_DIR$/xyz-reader-starter-code.iml" />
     </modules>
