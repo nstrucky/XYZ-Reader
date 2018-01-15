@@ -8,7 +8,9 @@
     <dimen name="fab_press_translation_z">6dp</dimen>
     <dimen name="fab_margin">24dp</dimen>
 
-    <dimen name="app_bar_elevation">8dp</dimen>
+
+    <!--Correct elevation per material specs site-->
+    <dimen name="app_bar_elevation">4dp</dimen>
 
     <dimen name="card_resting_state_elevation">2dp</dimen>
     <dimen name="card_press_translation_z">6dp</dimen>
@@ -16,5 +18,7 @@
     <dimen name="app_bar_height">112dp</dimen>
     <dimen name="toolbar_collapsed_height">56dp</dimen>
 
+    <dimen name="fab_height">56dp</dimen>
+    <dimen name="fab_width">56dp</dimen>
 
 </resources>

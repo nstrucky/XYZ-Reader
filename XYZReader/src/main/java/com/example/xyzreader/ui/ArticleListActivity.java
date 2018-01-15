@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.Loader;
 import android.database.Cursor;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 //import android.support.v7.app.ActionBarActivity;
 
@@ -28,6 +30,7 @@ import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
 import com.example.xyzreader.data.UpdaterService;
+import com.example.xyzreader.util.ConnectionBroadcastReceiver;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -41,9 +44,10 @@ import java.util.GregorianCalendar;
  * activity presents a grid of items as cards.
  */
 public class ArticleListActivity extends AppCompatActivity implements
-        LoaderManager.LoaderCallbacks<Cursor> {
+        LoaderManager.LoaderCallbacks<Cursor>, ConnectionBroadcastReceiver.ConnectivityChangeListener {
 
     private static final String TAG = ArticleListActivity.class.toString();
+    private boolean showConnectedMessage;
     private Toolbar mToolbar;
     private SwipeRefreshLayout mSwipeRefreshLayout;
     private RecyclerView mRecyclerView;
@@ -76,6 +80,39 @@ public class ArticleListActivity extends AppCompatActivity implements
         if (savedInstanceState == null) {
             refresh();
         }
+
+        registerConnectionReceiver();
+    }
+
+
+
+    private void registerConnectionReceiver() {
+
+        ConnectionBroadcastReceiver connectionBroadcastReceiver =
+                new ConnectionBroadcastReceiver(this);
+
+        IntentFilter intentFilter = new IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION);
+        intentFilter.addAction(Intent.ACTION_AIRPLANE_MODE_CHANGED);
+        this.registerReceiver(connectionBroadcastReceiver, intentFilter);
+
+    }
+
+    @Override
+    public void connectivityChanged(boolean connected) {
+        if (connected) return;
+
+        String message = getString(R.string.connection_lost);
+        final Snackbar snackbar =
+                Snackbar.make(findViewById(R.id.main_layout), message, Snackbar.LENGTH_INDEFINITE);
+
+        snackbar.setAction(getString(R.string.dismiss), new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                snackbar.dismiss();
+            }
+        });
+        snackbar.show();
+
     }
 
     private SwipeRefreshLayout.OnRefreshListener refreshListener = new SwipeRefreshLayout.OnRefreshListener() {

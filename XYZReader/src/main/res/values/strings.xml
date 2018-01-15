@@ -9,4 +9,8 @@
 
     <string name="up">Up</string>
 
+    <string name="connection_lost">Connection lost :(</string>
+
+    <string name="dismiss">DISMISS</string>
+
 </resources>

@@ -20,6 +20,7 @@ import android.view.WindowInsets;
 import com.example.xyzreader.R;
 import com.example.xyzreader.data.ArticleLoader;
 import com.example.xyzreader.data.ItemsContract;
+import com.example.xyzreader.util.MyPageTransformer;
 
 /**
  * An activity representing a single Article detail screen, letting you swipe between articles.
@@ -76,6 +77,8 @@ public class ArticleDetailActivity extends AppCompatActivity
                 updateUpButtonPosition();
             }
         });
+
+        mPager.setPageTransformer(true, new MyPageTransformer());
 
         mUpButtonContainer = findViewById(R.id.up_container);
 

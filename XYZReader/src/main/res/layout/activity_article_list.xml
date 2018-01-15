@@ -1,7 +1,8 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:id="@+id/main_layout">
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipe_refresh_layout"
@@ -27,7 +28,6 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/app_bar_height"
         android:elevation="@dimen/app_bar_elevation"
-        android:background="@color/theme_primary"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         >
 
@@ -36,7 +36,6 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
-            app:contentScrim="@color/theme_primary"
             app:expandedTitleGravity="top"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             >
